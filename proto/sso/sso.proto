@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package="github.com/sanantoha/protos/ssov1;ssov1";
+
+service Auth {
+  rpc Register (RegisterRequest) returns (RegisterResponse);
+  rpc Login (LoginRequest) returns (LoginResponse);
+  rpc IsAdmin (IsAdminRequest) returns (IsAdminRespons);
+}
+
+message RegisterRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message RegisterResponse {
+  string user_id = 1;
+}
+
+message LoginRequest {
+  string email = 1;
+  string password = 2;
+  int32 app_id = 3; // ID of the app to login to.
+}
+
+message LoginResponse {
+  string token = 1; // Auth token of the logged in user.
+}
+
+message IsAdminRequest {
+  string user_id = 1; // User id to validate
+}
+
+message IsAdminRespons {
+  bool is_admin = 1; // Indicate if user is an admin
+}
