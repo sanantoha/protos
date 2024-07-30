@@ -20,7 +20,7 @@ message RegisterResponse {
 }
 
 message LoginRequest {
-  string email = 1;
+  string email = 1; // this is email
   string password = 2;
   int32 app_id = 3; // ID of the app to login to.
 }
